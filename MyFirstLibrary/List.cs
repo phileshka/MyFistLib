@@ -259,7 +259,7 @@ namespace MyFirstLibrary
             return _array[FindIndexOfMaxElement()];
         }
 
-        public int[] SortInIncreasingOrder()
+        public void SortInIncreasingOrder()
         {
 
             for (int i = 0; i < Length - 1; ++i)
@@ -276,11 +276,9 @@ namespace MyFirstLibrary
 
                 Swap(ref _array[i], ref _array[min]);
             }
-
-            return _array;
         }
 
-        public int[] SortInDecreasingOrder()
+        public void SortInDecreasingOrder()
         {
 
             for (int i = 0; i < Length - 1; ++i)
@@ -297,8 +295,6 @@ namespace MyFirstLibrary
 
                 Swap(ref _array[i], ref _array[max]);
             }
-
-            return _array;
         }
 
         public void RemoveByFirstValue(int value)

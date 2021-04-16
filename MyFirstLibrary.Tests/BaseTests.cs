@@ -157,73 +157,73 @@ namespace MyFirstLibrary.Tests
             Assert.AreEqual(expected, actualInt);
         }
 
-        //[TestCase(new int[] { 7, 8, 45, 23, 10, 34, 57 }, new int[] { 57, 34, 10, 23, 45, 8, 7 })]
-        //[TestCase(new int[] { }, new int[] { })]
-        //public void ReverseArray_WhenValidValues_ReturnReversedArray(int[] actualArr, int[] expectedArr)
-        //{
-        //    Init(actualArr, expectedArr);
+        [TestCase(new int[] { 7, 8, 45, 23, 10, 34, 57 }, new int[] { 57, 34, 10, 23, 45, 8, 7 })]
+        [TestCase(new int[] { }, new int[] { })]
+        public void ReverseArray_WhenValidValues_ReturnReversedArray(int[] actualArr, int[] expectedArr)
+        {
+            Init(actualArr, expectedArr);
 
-        //    actual.Reverse();
+            actual.Reverse();
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected, actual);
+        }
 
-        //[TestCase(new int[] { 7, 8, 45, 23, 10, 34, 57 }, 6)]
-        //[TestCase(new int[] { 57, 57, 57, 57, 57, 57, 57 }, 0)]
-        //[TestCase(new int[] { -57 }, 0)]
-        //public void FindIndexOfMaxElement_WhenValidValues_ReturnIndex(int[] actualArr, int expected)
-        //{
-        //    List list = new List(actualArr);
-        //    int actual = list.FindIndexOfMaxElement();
+        [TestCase(new int[] { 7, 8, 45, 23, 10, 34, 57 }, 6)]
+        [TestCase(new int[] { 57, 57, 57, 57, 57, 57, 57 }, 0)]
+        [TestCase(new int[] { -57 }, 0)]
+        public void FindIndexOfMaxElement_WhenValidValues_ReturnIndex(int[] actualArr, int expected)
+        {
+            List list = new List(actualArr);
+            int actual = list.FindIndexOfMaxElement();
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected, actual);
+        }
 
-        //[TestCase(new int[] { 7, 8, 45, 23, 10, 34, 57 }, 0)]
-        //[TestCase(new int[] { 57, 57, 57, 57, 57, 57, 57 }, 0)]
-        //[TestCase(new int[] { -57 }, 0)]
-        //public void FindIndexOfMinElement_WhenValidValues_ReturnIndex(int[] actualArr, int expected)
-        //{
-        //    List list = new List(actualArr);
-        //    int actual = list.FindIndexOfMinElement();
+        [TestCase(new int[] { 7, 8, 45, 23, 10, 34, 57 }, 0)]
+        [TestCase(new int[] { 57, 57, 57, 57, 57, 57, 57 }, 0)]
+        [TestCase(new int[] { -57 }, 0)]
+        public void FindIndexOfMinElement_WhenValidValues_ReturnIndex(int[] actualArr, int expected)
+        {
+            List list = new List(actualArr);
+            int actual = list.FindIndexOfMinElement();
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected, actual);
+        }
 
-        //[TestCase(new int[] { 7, 8, 45, 23, 10, 34, 57 }, 57)]
-        //[TestCase(new int[] { 57, 57, 57, 57, 57, 57, 57 }, 57)]
-        //[TestCase(new int[] { -57 }, -57)]
-        //public void FindMaxElement_WhenValidValues_ReturnValue(int[] actualArr, int expected)
-        //{
-        //    List list = new List(actualArr);
-        //    int actual = list.FindMaxElement();
+        [TestCase(new int[] { 7, 8, 45, 23, 10, 34, 57 }, 57)]
+        [TestCase(new int[] { 57, 57, 57, 57, 57, 57, 57 }, 57)]
+        [TestCase(new int[] { -57 }, -57)]
+        public void FindMaxElement_WhenValidValues_ReturnValue(int[] actualArr, int expected)
+        {
+            List list = new List(actualArr);
+            int actual = list.FindMaxElement();
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected, actual);
+        }
 
-        //[TestCase(new int[] { 7, 8, 45, 23, 10, 34, 57 }, 7)]
-        //[TestCase(new int[] { 57, 57, 57, 57, 57, 57, 57 }, 57)]
-        //[TestCase(new int[] { -57 }, -57)]
-        //public void FindMinElement_WhenValidValues_ReturnValue(int[] actualArr, int expected)
-        //{
-        //    List list = new List(actualArr);
-        //    int actual = list.FindMinElement();
+        [TestCase(new int[] { 7, 8, 45, 23, 10, 34, 57 }, 7)]
+        [TestCase(new int[] { 57, 57, 57, 57, 57, 57, 57 }, 57)]
+        [TestCase(new int[] { -57 }, -57)]
+        public void FindMinElement_WhenValidValues_ReturnValue(int[] actualArr, int expected)
+        {
+            List list = new List(actualArr);
+            int actual = list.FindMinElement();
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected, actual);
+        }
 
-        //[TestCase(new int[] { 7, 8, 45, 23, 10, 34, 57 }, new int[] { 7, 8, 10, 23, 34, 45, 57 })]
-        //[TestCase(new int[] { }, new int[] { })]
-        //[TestCase(new int[] { 3 }, new int[] { 3 })]
-        //public void SortInIncreasingOrder_WhenValidValues_ReturnSortedArray(int[] actualArr, int[] expectedArr)
-        //{
-        //    List actual = new List(actualArr);
-        //    List expected = new List(expectedArr);
+        [TestCase(new int[] { 7, 8, 45, 23, 10, 34, 57 }, new int[] { 7, 8, 10, 23, 34, 45, 57 })]
+        [TestCase(new int[] { }, new int[] { })]
+        [TestCase(new int[] { 3 }, new int[] { 3 })]
+        public void SortInIncreasingOrder_WhenValidValues_ReturnSortedArray(int[] actualArr, int[] expectedArr)
+        {
+            List actual = new List(actualArr);
+            List expected = new List(expectedArr);
 
-        //    actual.SortInIncreasingOrder();
+            actual.SortInIncreasingOrder();
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected, actual);
+        }
 
         //[TestCase(new int[] { 7, 8, 45, 23, 10, 34, 57 }, new int[] { 57, 45, 34, 23, 10, 8, 7 })]
         //[TestCase(new int[] { }, new int[] { })]

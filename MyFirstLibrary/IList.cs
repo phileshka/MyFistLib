@@ -27,5 +27,17 @@ namespace MyFirstLibrary
         int GetIndexByValue(int value);
 
         void Reverse();
+
+        int FindIndexOfMaxElement();
+
+        int FindIndexOfMinElement();
+
+        int FindMaxElement();
+
+        int FindMinElement();
+
+        void SortInIncreasingOrder();
+
+        void SortInDecreasingOrder();
     }
 }

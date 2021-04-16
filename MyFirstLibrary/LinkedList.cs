@@ -389,31 +389,39 @@ namespace MyFirstLibrary
 
         public void SortInIncreasingOrder()
         {
+            for (int i = 0; i < Length - 1; ++i)
+            {
+                for (int j = i + 1; j < Length; ++j)
+                {
+                    if (this[i] < this[j])
+                    {
+                        int tmp = this[i];
+                        this[i] = this[j];
+                        this[j] = tmp;
+                    }
+                }
+            }
+        }
+
+        public void SortInDecreasingOrder()
+        {
             Node current = _root;
 
             if (Length >= 0)
             {
                 for (int i = 1; i < Length - 1; ++i)
                 {
-                    int min = current.Value;
+                    int max = current.Value;
 
                     for (int j = i + 1; j < Length; ++j)
                     {
-                        if (current.Next.Value < min)
+                        if (current.Next.Value > max)
                         {
-                            min = current.Next.Value;
+                            max = current.Next.Value;
                         }
                     }
-
-                    Swap();
                 }
-
-                return;
             }
-        }
-
-        public void SortInDecreasingOrder()
-        {
         }
 
         public void RemoveByFirstValue(int value)
@@ -462,12 +470,11 @@ namespace MyFirstLibrary
             }
         }
 
-        private void Swap()
+        private void Swap(ref int a, ref int b)
         {
-            Node current = _root;
-            int tmp = current.Value;
-            current.Next.Value = current.Next.Next.Value;
-            current.Next.Next.Value = tmp;
+            int tmp = a;
+            a = b;
+            b = tmp;
         }
 
         public override string ToString()
