@@ -4,8 +4,14 @@
     {
         public override void Init(int[] actualArray, int[] expectedArray)
         {
-            actual = new List(actualArray);
-            expected = new List(expectedArray);
+            if (actualArray != null)
+            {
+                actual = new List(actualArray);
+            }
+            if (expectedArray != null)
+            {
+                expected = new List(expectedArray);
+            }
         }
     }
 }

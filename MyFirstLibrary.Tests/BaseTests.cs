@@ -120,15 +120,16 @@ namespace MyFirstLibrary.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestCase(3, 2, new int[] { 0, 1, 5, 8, 7, 3, 2, 1 }, new int[] { 0, 1, 5, 3, 2, 1 })]
-        //public void RemoveNElementsByIndex_WhenValidValues_RemoveNElementsByIndex(int index, int NElements, int[] actualArr, int[] expectedArr)
-        //{
-        //    Init(actualArr, expectedArr);
+        [TestCase(3, 2, new int[] { 0, 1, 5, 8, 7, 3, 2, 1 }, new int[] { 0, 1, 3, 2, 1 })]
+        [TestCase(100, 6, new int[] { 0, 1, 5, 8, 7, 3, 2, 1 }, new int[] { 0, 1, 5, 8, 7, 3 })]
+        public void RemoveNElementsByIndex_WhenValidValues_RemoveNElementsByIndex(int nElements, int index, int[] actualArr, int[] expectedArr)
+        {
+            Init(actualArr, expectedArr);
 
-        //    actual.RemoveNElementsByIndex(index, NElements);
+            actual.RemoveNElementsByIndex(nElements, index);
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected, actual);
+        }
 
         //[TestCase(-22, 2, new int[] { 0, 1, 5, 8, 7, 3, 2, 1 }, new int[] { 0, 1, 5, 8, 7, 3, 2, 1 })]
         //[TestCase(-2222, 2, new int[] { 0, 1, 5, 8, 7, 3, 2, 1 }, new int[] { 0, 1, 5, 8, 7, 3, 2, 1 })]
@@ -145,17 +146,16 @@ namespace MyFirstLibrary.Tests
         //    });
         //}
 
-        //[TestCase(10, new int[] { 7, 8, 45, 23, 10, 34, 57 }, 4)]
-        //[TestCase(10, new int[] { 7, 8, 45, 23, 9, 34, 57 }, -1)]
-        //[TestCase(10, new int[] { 7, 8, 10, 23, 9, 10, 57 }, 2)]
-        //public void GetIndexByValue_WhenValidValues_ReturnIndex(int value, int[] actualArr, int expected)
-        //{
+        [TestCase(10, new int[] { 7, 8, 45, 23, 10, 34, 57 }, 4)]
+        [TestCase(10, new int[] { 7, 8, 45, 23, 9, 34, 57 }, -1)]
+        [TestCase(10, new int[] { 7, 8, 10, 23, 9, 10, 57 }, 2)]
+        public void GetIndexByValue_WhenValidValues_ReturnIndex(int value, int[] actualArr, int expected)
+        {
+            Init(actualArr, null);
+            int actualInt = actual.GetIndexByValue(value);
 
-        //    Init(actualArr, expectedArr);
-        //    actual.GetIndexByValue(value);
-
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected, actualInt);
+        }
 
         //[TestCase(new int[] { 7, 8, 45, 23, 10, 34, 57 }, new int[] { 57, 34, 10, 23, 45, 8, 7 })]
         //[TestCase(new int[] { }, new int[] { })]

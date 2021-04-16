@@ -153,7 +153,7 @@ namespace MyFirstLibrary
             RemoveNElementsByIndex(startIndex, nElements);
         }
 
-        public void RemoveNElementsByIndex(int index, int nElements)
+        public void RemoveNElementsByIndex(int nElements, int index)
         {
             if (index > 0 && index <= Length)
             {
@@ -182,6 +182,7 @@ namespace MyFirstLibrary
 
         public int GetIndexByValue(int value)
         {
+            
             for (int i = 0; i < Length; ++i)
             {
                 if (value == _array[i])

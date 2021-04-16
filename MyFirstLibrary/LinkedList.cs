@@ -102,21 +102,20 @@ namespace MyFirstLibrary
 
         public void AddByIndex(int value, int index)
         {
-            Node current = _root;
-
-            if (index > 0 && index<Length-1)
+            if (index == 0)
             {
-                if (index == 0)
-                {
-                    AddInStart(value);
-                    return;
-                }
-                else if (index == Length - 1)
-                {
-                    Add(value);
-                    return;
-                }
+                AddInStart(value);
+                return;
+            }
+            else if (index == Length - 1)
+            {
+                Add(value);
+                return;
+            }
+            if (index > 0 && index < Length - 1)
+            {
 
+                Node current = _root;
                 Node insert = new Node(value);
 
                 for (int i = 1; i < index; ++i)
@@ -163,7 +162,7 @@ namespace MyFirstLibrary
                 Remove();
                 return;
             }
-            
+
             Node current = _root;
 
             if (index >= 0 && index < Length - 1)
@@ -191,7 +190,7 @@ namespace MyFirstLibrary
                     int res = Length - nElements;
                     Node current = _root;
 
-                    for (int i = 1; i < res ; ++i)
+                    for (int i = 1; i < res; ++i)
                     {
                         current = current.Next;
                     }
@@ -220,8 +219,8 @@ namespace MyFirstLibrary
                         current = current.Next;
                     }
 
-                    current.Next = _root;
-                    --Length;
+                    _root = current.Next;
+                    Length -= nElements;
                 }
             }
 
@@ -231,30 +230,66 @@ namespace MyFirstLibrary
             }
         }
 
-        //public void RemoveNElementsByIndex(int nElements, int index)
-        //{
-        //    if (Length >= nElements)
-        //    {
-        //        if (nElements >= 0)
-        //        {
-        //            Node current = index;//get node by index
-        //            Node range = nElements + index;
+        public void RemoveNElementsByIndex(int nElements, int index)
+        {
+            if (index >= 0 && index < Length)
+            {
+                if (index == 0)
+                {
+                    RemoveNElementsFromStart(nElements);
+                }
+                else if (nElements == Length - 1)
+                {
+                    RemoveNElements(nElements);
+                }
+                else if (nElements > 0)
+                {
+                    Node current = _root;
+                    Node tmp = _root;
 
-        //            RemoveNElements(index);
-        //            Length -= nElements;
-        //        }
-        //    }
-        //}//ff
+                    for (int i = 1; i < index; ++i)
+                    {
+                        current = current.Next;
+                        tmp = tmp.Next;
+                    }
+                    if (nElements + index >= Length)
+                    {
+                        Length = index;
+                        current.Next = null;
+                    }
+                    else
+                    {
+                        for (int i = index; i <= index + nElements; ++i)
+                        {
+                            tmp = tmp.Next;
+                        }
+
+                        Length -= nElements;
+                        current.Next = tmp;
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid count");
+                }
+            }
+            else if (index < 0 || index > Length)
+            {
+                throw new IndexOutOfRangeException();
+            }
+        }
 
         public int GetIndexByValue(int value)
         {
             Node current = _root;
-            for (int i = 1; i < Length; ++i)
+
+            for (int i = 0; i < Length; ++i)
             {
                 if (current.Value == value)
                 {
                     return i;
                 }
+                current = current.Next;
             }
 
             return -1;
@@ -483,11 +518,6 @@ namespace MyFirstLibrary
             }
 
             return result;
-        }
-
-        public void RemoveNElementsByIndex(int nElements, int index)
-        {
-            throw new NotImplementedException();
         }
     }
 }
