@@ -15,7 +15,5 @@ namespace MyFirstLibrary
             Value = value;
             Next = null;
         }
-
-        public Node _tail { get; set; }
     }
 }

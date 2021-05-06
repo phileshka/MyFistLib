@@ -75,6 +75,15 @@ namespace MyFirstLibrary
             }
 
         }
+        public static LinkedList Create(int[] values)
+        {
+            if (!(values is null))
+            {
+                return new LinkedList(values);
+            }
+
+            throw new NullReferenceException("Values is null");
+        }
 
         public void Add(int value)
         {
@@ -389,92 +398,161 @@ namespace MyFirstLibrary
 
         public void SortInIncreasingOrder()
         {
-            for (int i = 0; i < Length - 1; ++i)
+            for (int i = 0; i < Length; i++)
             {
-                for (int j = i + 1; j < Length; ++j)
+                int min = i;
+
+                for (int j = i + 1; j < Length; j++)
                 {
-                    if (this[i] < this[j])
+                    if (GetNodeByIndex(min).Value > GetNodeByIndex(j).Value)
                     {
-                        int tmp = this[i];
-                        this[i] = this[j];
-                        this[j] = tmp;
+                        min = j;
                     }
                 }
+
+                int temp = GetNodeByIndex(i).Value;
+                GetNodeByIndex(i).Value = GetNodeByIndex(min).Value;
+                GetNodeByIndex(min).Value = temp;
             }
         }
 
         public void SortInDecreasingOrder()
         {
-            Node current = _root;
-
-            if (Length >= 0)
+            for (int i = 0; i < Length; i++)
             {
-                for (int i = 1; i < Length - 1; ++i)
-                {
-                    int max = current.Value;
+                int max = i;
 
-                    for (int j = i + 1; j < Length; ++j)
+                for (int j = i + 1; j < Length; j++)
+                {
+                    if (GetNodeByIndex(max).Value < GetNodeByIndex(j).Value)
                     {
-                        if (current.Next.Value > max)
+                        max = j;
+                    }
+                }
+
+                int temp = GetNodeByIndex(i).Value;
+                GetNodeByIndex(i).Value = GetNodeByIndex(max).Value;
+                GetNodeByIndex(max).Value = temp;
+            }
+        }
+
+        public void RemoveByValueFirst(int value)
+        {
+            int index = GetIndexByValue(value);
+
+            if (!(value == -1))
+            {
+                RemoveByIndex(index);
+            }
+        }
+
+        public void RemoveByValueAll(int value)
+        {
+            int indexOfElements = GetIndexByValue(value);
+
+            while (indexOfElements != -1)
+            {
+                RemoveByIndex(indexOfElements);
+                indexOfElements = GetIndexByValue(value);
+            }
+        }
+
+        public void AddListToTheEnd(LinkedList secondList)
+        {
+            if (Length != 0)
+            {
+                if (secondList.Length != 0)
+                {
+                    _tail.Next = secondList._root;
+                    Length += secondList.Length;
+
+                }
+
+                else
+                {
+                    throw new ArgumentException("No elements in list!");
+                }
+            }
+
+            else
+            {
+                _root = secondList._root;
+                _tail = secondList._tail;
+
+                Length = secondList.Length;
+            }
+        }
+
+        public void AddListToStart(LinkedList secondList)
+        {
+            if (Length != 0)
+            {
+                if (secondList.Length != 0)
+                {
+                    secondList._tail.Next = _root;
+                    _root = secondList._root;
+
+                    Length += secondList.Length;
+                }
+
+                else
+                {
+                    throw new ArgumentException("No elements in list!");
+                }
+            }
+
+            else
+            {
+                _root = secondList._root;
+                _tail = secondList._tail;
+
+                Length = secondList.Length;
+            }
+        }
+
+        public void AddListByIndex(LinkedList secondList, int index)
+        {
+            if (secondList.Length != 0)
+            {
+                if (index >= 0 && index <= Length)
+                {
+                    if (Length != 0)
+                    {
+                        if (index == 0)
                         {
-                            max = current.Next.Value;
+                            AddListToStart(secondList);
+                        }
+
+                        else
+                        {
+                            Node current = GetNodeByIndex(index - 1);
+
+                            secondList._tail.Next = current.Next;
+                            current.Next = secondList._root;
+
+                            Length += secondList.Length;
                         }
                     }
-                }
-            }
-        }
 
-        public void RemoveByFirstValue(int value)
-        {
-            Node current = _root;
-
-            if (Length > 0)
-            {
-                for (int i = 1; i < Length; ++i)
-                {
-                    current = current.Next;
-                    if (current.Value == value)
+                    else
                     {
-                        --Length;
-                        break;
+                        _root = secondList._root;
+                        _tail = secondList._tail;
+
+                        Length = secondList.Length;
                     }
+                }
+
+                else
+                {
+                    throw new IndexOutOfRangeException("Out of range!");
                 }
             }
 
             else
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentException("No elements in list!");
             }
-        }
-
-        public void RemoveByAllValues(int value)
-        {
-            Node current = _root;
-
-            if (Length > 0)
-            {
-                for (int i = 1; i < Length; ++i)
-                {
-                    current = current.Next;
-                    if (current.Value == value)
-                    {
-                        RemoveByIndex(i);
-                        --i;
-                    }
-                }
-            }
-
-            else
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        private void Swap(ref int a, ref int b)
-        {
-            int tmp = a;
-            a = b;
-            b = tmp;
         }
 
         public override string ToString()
@@ -525,6 +603,17 @@ namespace MyFirstLibrary
             }
 
             return result;
+        }
+
+        private Node GetNodeByIndex(int index)
+        {
+            Node current = _root;
+
+            for (int i = 1; i <= index; i++)
+            {
+                current = current.Next;
+            }
+            return current;
         }
     }
 }

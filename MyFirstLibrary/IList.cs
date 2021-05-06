@@ -39,5 +39,21 @@ namespace MyFirstLibrary
         void SortInIncreasingOrder();
 
         void SortInDecreasingOrder();
+
+        void RemoveByValueFirst(int value);
+
+        void RemoveByValueAll(int value);
+
+        //void AddListToTheEnd(LinkedList secondList);
+
+        //void AddListToStart(LinkedList secondList);
+
+        //void AddListByIndex(LinkedList secondList, int index);
+
+        //void AddListToTheEnd(DoubleLinkedList secondList);
+
+        //void AddListToStart(DoubleLinkedList secondList);
+
+        //void AddListByIndex(DoubleLinkedList secondList, int index);
     }
 }

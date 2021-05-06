@@ -150,12 +150,12 @@ namespace MyFirstLibrary
         public void RemoveNElementsFromStart(int nElements)
         {
             int startIndex = 0;
-            RemoveNElementsByIndex(startIndex, nElements);
+            RemoveNElementsByIndex(nElements, startIndex);
         }
 
         public void RemoveNElementsByIndex(int nElements, int index)
         {
-            if (index > 0 && index <= Length)
+            if (index >= 0 && index <= Length)
             {
                 if (Length >= nElements)
                 {
@@ -297,7 +297,7 @@ namespace MyFirstLibrary
             }
         }
 
-        public void RemoveByFirstValue(int value)
+        public void RemoveByValueFirst(int value)
         {
             int numberOfElements = 1;
             if (Length > 0)
@@ -315,7 +315,7 @@ namespace MyFirstLibrary
             }
         }
 
-        public void RemoveByAllValues(int value)
+        public void RemoveByValueAll(int value)
         {
             for (int i = 0; i < Length; ++i)
             {
